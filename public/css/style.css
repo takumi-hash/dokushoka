@@ -23,8 +23,8 @@ body * {
     max-width: 100%;
 }
 
-/*
-.card-body {
-    text-align: justify;
+.book-img {
+    width: 100%;
+    height: auto;
+
 }
-*/
