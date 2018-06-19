@@ -11,9 +11,9 @@
         </div>
     </div>
 @endsection
-{{--
+
 @section('content')
-    @include('items.items')
-    {!! $items->render() !!}
+    @include('books.books')
+    {!! $books->render() !!}
 @endsection
---}}
+

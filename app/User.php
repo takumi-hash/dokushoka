@@ -29,7 +29,7 @@ class User extends Authenticatable
     
     public function books()
     {
-        return $this->belongsToMany(Item::class)->withPivot('type')->withTimestamps();
+        return $this->belongsToMany(Book::class)->withPivot('type')->withTimestamps();
     }
 
     public function want_books()
@@ -59,7 +59,7 @@ class User extends Authenticatable
 
         if ($exist) {
             // remove "want"
-            \DB::delete("DELETE FROM item_user WHERE user_id = ? AND book_id = ? AND type = 'want'", [\Auth::user()->id, $itemId]);
+            \DB::delete("DELETE FROM book_user WHERE user_id = ? AND book_id = ? AND type = 'want'", [\Auth::user()->id, $itemId]);
         } else {
             // do nothing
             return false;
@@ -68,7 +68,7 @@ class User extends Authenticatable
 
     public function is_wanting($itemIdOrCode)
     {
-        if (is_numeric($itemIdOrCode)) {
+        if (strlen($itemIdOrCode)<10) {
             $item_id_exists = $this->want_books()->where('book_id', $itemIdOrCode)->exists();
             return $item_id_exists;
         } else {

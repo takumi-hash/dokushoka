@@ -1,22 +1,27 @@
 @if ($books)
-<div class="row">
-            @foreach ($books as $book)
-            <div class="card col-lg-2">
+    <div class="row">
+        @foreach ($books as $book)
+            <div class="card col-lg-2 bg-dark">
                 <img class="card-img-top" src="{{ $book->image_url }}" alt="{{ $book->title }}">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $book->title }}</h5>
-                    <p class="card-text">{{ $book->author }}</p>
+                <div class="card-body text-light">
+                    @if ($book->id)
+                    <p class="card-title"><a href="{{ route('books.show', $book->id) }}">{{ $book->title }}</a></p>
+                    @else
+                    <p class="card-text">{{ $book->title }}</p>
+                    @endif
+                    <hr>
+                    <p class="card-text">{{ $book->publisher }}</p>
+                    <p class="card-text">{{ $book->isbn }}</p>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">{{ $book->publisher }}</li>
-                    <li class="list-group-item">{{ $book->isbn }}</li>
-                </ul>
                 <div class="card-body">
                     <a href="{{ $book->url }}" class="btn btn-outline-primary">Buy</a>
-                    <a href="#" class="btn btn-outline-success">Want</a>
+                    @if (Auth::check())
+                        @include('books.want_button', ['book' => $book])
+                    @endif
                     <a href="#" class="btn btn-outline-info">Have</a>
                 </div>
             </div>
-            @endforeach
-</div>
+        @endforeach
+    </div>
 @endif
+

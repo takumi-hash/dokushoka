@@ -34,7 +34,7 @@ use \App\Book;
                 $item->author = $rws_item['Item']['author'];
                 $item->publisher = $rws_item['Item']['publisherName'];
                 $item->url = $rws_item['Item']['itemUrl'];
-                $item->image_url = str_replace('?_ex=200x200', '', $rws_item['Item']['largeImageUrl']);
+                $item->image_url = str_replace('?_ex=120x120', '', $rws_item['Item']['mediumImageUrl']);
                 $books[] = $item;
             }
         }
@@ -45,4 +45,14 @@ use \App\Book;
             'books' => $books,
         ]);
     }
-  }
+    public function show($id)
+    {
+      $book = Book::find($id);
+      $want_users = $book->want_users;
+
+      return view('books.show', [
+          'book' => $book,
+          'want_users' => $want_users,
+      ]);
+    }
+}

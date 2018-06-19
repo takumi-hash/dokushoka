@@ -16,3 +16,8 @@ body * {
     /*background-attachment: fixed;*/
     background-size: cover;
 }
+
+.card img {
+    max-height: 100%;
+    max-width: 100%;
+}
