@@ -24,10 +24,8 @@
 
         @yield('cover')
 
-        <div class="container-fluid">
-            @include('commons.error_messages')
-            @yield('content')
-        </div>
+        @include('commons.error_messages')
+        @yield('content')
 
         @include('commons.footer')
         <!-- Optional JavaScript -->

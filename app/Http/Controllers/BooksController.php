@@ -12,33 +12,36 @@ use \App\Book;
 
     public function create()
     {
-        $keyword = request()->keyword;
+        $q_title = request()->q_title;
+        $q_author = request()->q_author;
         $books = [];
-        if ($keyword) {
+        if (isset($q_title) || isset($q_author)) {
             $client = new \RakutenRws_Client();
             $client->setApplicationId(env('RAKUTEN_APPLICATION_ID'));
 
-            $rws_response = $client->execute('IchibaBookSearch', [
-                'keyword' => $keyword,
+            $rws_response = $client->execute('BooksBookSearch', [
+                'title' => $q_title,
+                'author' => $q_author,
                 'imageFlag' => 1,
                 'hits' => 20,
             ]);
 
             // Creating "Book" instance to make it easy to handle.（not saving）
-            foreach ($rws_response->getData()['Books'] as $rws_item) {
+            foreach ($rws_response->getData()['Items'] as $rws_item) {
                 $item = new Book();
-                $item->code = $rws_item['Item']['isbn'];
-                $item->name = $rws_item['Item']['title'];
+                $item->isbn = $rws_item['Item']['isbn'];
+                $item->title = $rws_item['Item']['title'];
                 $item->author = $rws_item['Item']['author'];
                 $item->publisher = $rws_item['Item']['publisherName'];
                 $item->url = $rws_item['Item']['itemUrl'];
-                $item->image_url = str_replace('?_ex=120x120', '', $rws_item['Item']['mediumImageUrls'][0]['imageUrl']);
+                $item->image_url = str_replace('?_ex=200x200', '', $rws_item['Item']['largeImageUrl']);
                 $books[] = $item;
             }
         }
 
         return view('books.create', [
-            'keyword' => $keyword,
+            'q_title' => $q_title,
+            'q_author' => $q_author,
             'books' => $books,
         ]);
     }

@@ -1,18 +1,22 @@
-@if ($items)
-    <div class="row">
-        @foreach ($items as $item)
-            <div class="item">
-                <div class="col-md-3 col-sm-4 col-xs-12">
-                    <div class="card">
-                        <div class="card-heading text-center">
-                            <img src="{{ $book->image_url }}" alt="">
-                        </div>
-                        <div class="panel-body">
-                            <p class=""><a href="#">{{ $book->title }}</a></p>
-                        </div>
-                    </div>
+@if ($books)
+<div class="row">
+            @foreach ($books as $book)
+            <div class="card col-lg-2">
+                <img class="card-img-top" src="{{ $book->image_url }}" alt="{{ $book->title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $book->title }}</h5>
+                    <p class="card-text">{{ $book->author }}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{ $book->publisher }}</li>
+                    <li class="list-group-item">{{ $book->isbn }}</li>
+                </ul>
+                <div class="card-body">
+                    <a href="{{ $book->url }}" class="btn btn-outline-primary">Buy</a>
+                    <a href="#" class="btn btn-outline-success">Want</a>
+                    <a href="#" class="btn btn-outline-info">Have</a>
                 </div>
             </div>
-        @endforeach
-    </div>
+            @endforeach
+</div>
 @endif
