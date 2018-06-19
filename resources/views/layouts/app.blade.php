@@ -8,13 +8,18 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+
         <title>{{ config('app.name', 'ドクショカ') }}</title>
-        
-        <link rel="stylesheet" href="{{ secure_asset('css/style.css') }}">
+
+    @if(app('env')=='local')
+    <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
+    @elseif(app('env')=='production')
+    <link rel="stylesheet" href="{{ secure_asset('/css/style.css') }}">
+    @endif
+        <link rel="stylesheet" href="{{ secure_asset('/css/style.css') }}" media="all" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
