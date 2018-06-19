@@ -26,5 +26,14 @@ body * {
 .book-img {
     width: 100%;
     height: auto;
+    box-shadow:3px 2px 15px;
+}
 
+.author{
+    font-size: 13px;
+}
+
+.user_photo{
+    width:200px;
+    height: auto;
 }

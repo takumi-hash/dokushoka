@@ -1,28 +1,29 @@
 @if ($books)
     <div class="row">
         @foreach ($books as $book)
-            <div class="col-md-4 col-sm-4 bg-light d-flex align-items-center p-1">
+            <div class="col-md-4 col-sm-6 bg-white d-flex align-items-center p-3 py-5">
                 <div class="col-6">
-                    <img class="book-img" src="{{ $book->image_url }}" alt="{{ $book->title }}">
+                    <img class="book-img rounded" src="{{ $book->image_url }}" alt="{{ $book->title }}">
                 </div>
                 <div class="col-6">
                     <div class="text-dark">
                         @if ($book->id)
-                        <p class=""><a href="{{ route('books.show', $book->id) }}">{{ $book->title }}</a></p>
+                        <h5 class=""><a href="{{ route('books.show', $book->id) }}">{{ $book->title }}</a></h5>
                         @else
-                        <p class="">{{ $book->title }}</p>
+                        <h5 class="font-weight-normal">{{ $book->title }}</h5>
                         @endif
-                        <p class="text-white-50">{{ $book->author }}</p>
+                        <p class="author">{{ $book->author }}</p>
                         <hr>
-                        <small class="text-muted">{{ $book->publisher }}</small>
-                        <small class="text-muted">{{ $book->isbn }}</small>
                     </div>
+                    <!--div class="text-muted">
+                        <small class="">{{ $book->publisher }} / {{ $book->isbn }}</small>
+                    </div-->
                     <div class="">
-                        <a href="{{ $book->url }}" class="btn btn-outline-primary">Buy</a>
                         @if (Auth::check())
                             @include('books.want_button', ['book' => $book])
+                            @include('books.have_button', ['book' => $book])
                         @endif
-                        <a href="#" class="btn btn-outline-info">Have</a>
+                        <a href="{{ $book->url }}" class="btn btn-block btn-outline-primary">Buy</a>
                     </div>
                 </div>
             </div>
