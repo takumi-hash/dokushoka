@@ -1,7 +1,7 @@
 @if ($books)
     <div class="row">
         @foreach ($books as $book)
-            <div class="card col-lg-2 bg-dark">
+            <div class="card col-md-2 col-sm-4 bg-dark">
                 <img class="card-img-top" src="{{ $book->image_url }}" alt="{{ $book->title }}">
                 <div class="card-body text-light">
                     @if ($book->id)
@@ -9,9 +9,10 @@
                     @else
                     <p class="card-text">{{ $book->title }}</p>
                     @endif
+                    <p class="card-text text-white-50">{{ $book->author }}</p>
                     <hr>
-                    <p class="card-text">{{ $book->publisher }}</p>
-                    <p class="card-text">{{ $book->isbn }}</p>
+                    <small class="text-muted">{{ $book->publisher }}</small>
+                    <small class="text-muted">{{ $book->isbn }}</small>
                 </div>
                 <div class="card-body">
                     <a href="{{ $book->url }}" class="btn btn-outline-primary">Buy</a>
@@ -24,4 +25,3 @@
         @endforeach
     </div>
 @endif
-

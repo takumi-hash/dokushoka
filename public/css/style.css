@@ -2,6 +2,7 @@
 
 body * {
     font-family: 'Noto Sans JP', sans-serif;
+    font-weight: lighter;
 }
 
 .navbar-extend {
@@ -21,3 +22,9 @@ body * {
     max-height: 100%;
     max-width: 100%;
 }
+
+/*
+.card-body {
+    text-align: justify;
+}
+*/
