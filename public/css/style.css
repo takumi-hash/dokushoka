@@ -1,0 +1,12 @@
+.navbar-extend {
+    height: 80px;
+}
+
+.jumbotron-extend{
+    color: #333;
+    background: linear-gradient(0deg, rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url("/images/bg.jpg");
+    background-position: top;
+    background-repeat: no-repeat;
+    /*background-attachment: fixed;*/
+    background-size: cover;
+}
