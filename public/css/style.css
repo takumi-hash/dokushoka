@@ -2,7 +2,7 @@
 
 body * {
     font-family: 'Noto Sans JP', sans-serif;
-    font-weight: lighter;
+    font-weight: 300;
 }
 
 .navbar-extend {
@@ -16,6 +16,10 @@ body * {
     background-repeat: no-repeat;
     /*background-attachment: fixed;*/
     background-size: cover;
+}
+
+.jumbotron-extend h1 {
+    font-weight: lighter;
 }
 
 .card img {

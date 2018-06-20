@@ -1,8 +1,11 @@
 @if ($books)
     <div class="row">
-        @foreach ($books as $book)
+        @foreach ($books as $key => $book)
             <div class="col-md-4 col-sm-6 bg-white d-flex align-items-center p-3 py-5">
                 <div class="col-6">
+                @if (isset($book->count))
+                    <p class="text-center h4">{{ $key+1 }}位: {{ $book->count}} Points</p>
+                @endif
                     <img class="book-img rounded" src="{{ $book->image_url }}" alt="{{ $book->title }}">
                 </div>
                 <div class="col-6">
@@ -26,6 +29,7 @@
                         <a href="{{ $book->url }}" class="btn btn-block btn-outline-primary">Buy</a>
                     </div>
                 </div>
+
             </div>
         @endforeach
     </div>

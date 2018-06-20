@@ -29,7 +29,7 @@ class BookUserController extends Controller
             'author' => $rws_item['author'],
             'publisher' => $rws_item['publisherName'],
             'url' => $rws_item['itemUrl'],
-            'image_url' => str_replace('?_ex=120x120', '', $rws_item['mediumImageUrl']),
+            'image_url' => str_replace('?_ex=200x200', '', $rws_item['largeImageUrl']),
         ]);
 
         \Auth::user()->want($item->id);
@@ -67,7 +67,7 @@ class BookUserController extends Controller
             'author' => $rws_item['author'],
             'publisher' => $rws_item['publisherName'],
             'url' => $rws_item['itemUrl'],
-            'image_url' => str_replace('?_ex=120x120', '', $rws_item['mediumImageUrl']),
+            'image_url' => str_replace('?_ex=200x200', '', $rws_item['largeImageUrl']),
         ]);
 
         \Auth::user()->have($item->id);

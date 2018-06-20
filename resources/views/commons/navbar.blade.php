@@ -24,9 +24,13 @@
                             </li>
                         @else
                             <li class="nav-item">
-                            <a class="nav-link" href="{{ route('books.create') }}">
-                                アイテムを追加
-                            </a>
+                                <a class="nav-link" href="{{ route('books.create') }}">アイテムを追加</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('ranking.want') }}">Wantランキング</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('ranking.have') }}">Haveランキング</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
