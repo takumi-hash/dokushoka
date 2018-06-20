@@ -13,7 +13,8 @@
 @endsection
 
 @section('content')
+<div class="contnainer">
     @include('books.books')
     {!! $books->render() !!}
+    </div>
 @endsection
-

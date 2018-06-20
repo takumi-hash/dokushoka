@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+Route::get('/', 'PostsController@index');
 
 Auth::routes();
 
@@ -26,5 +27,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('want', 'BookUserController@dont_want')->name('book_user.dont_want');
     Route::post('have', 'BookUserController@have')->name('book_user.have');
     Route::delete('have', 'BookUserController@dont_have')->name('book_user.dont_have');
-    Route::resource('users', 'UsersController', ['only' => ['show']]);
+    Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+    Route::resource('posts', 'PostsController', ['only' => ['store', 'destroy']]);
 });

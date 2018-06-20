@@ -121,5 +121,9 @@ class User extends Authenticatable
             return $item_code_exists;
         }
     }
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 
 }

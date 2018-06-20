@@ -6,28 +6,50 @@
             <img src="/images/user.jpg" alt="" class="rounded-circle user_photo">
         </div>
         <div class="text-center">
-            <h1>{{ $user->name }}</h1>
+            <h2 class="font-weight-light">{{ $user->name }}</h1>
         </div>
-        <div class="text-center">
-            <div class="lead">WANT</div>
-            <div id="want_count" class="status-value">
-                {{ $count_want }}
+        <div class="text-center row">
+            <div class="border-right col-md-2">
+                <p class="lead">Posts</p>
+                <p id="" class="status-value">
+                    {{ $count_posts }}
+                </p>
             </div>
-            <div class="lead">HAVE</div>
-            <div id="have_count" class="status-value">
-                {{ $count_have }}
+            <div class="border-right col-md-2">
+                <p class="lead">Books</p>
+                <p id="have_count" class="status-value">
+                    {{ $count_have }}
+                </p>
             </div>
-            <div class="lead">
-                Followers
+            <div class="border-right col-md-2">
+                <p class="lead">Wants</p>
+                <p id="want_count" class="status-value">
+                    {{ $count_want }}
+                </p>
             </div>
-            <div id="followers" class="status-value">
-                211
+            <div class="border-right col-md-2">
+                <p class="lead">
+                    Followers
+                </p>
+                <p id="followers" class="status-value">
+                    211
+                </p>
             </div>
-            <div class="lead">
-                Following
+            <div class="border-right col-md-2">
+                <p class="lead">
+                    Following
+                </p>
+                <p id="followers" class="status-value">
+                    162
+                </p>
             </div>
-            <div id="following" class="status-value">
-                162
+            <div class="col-md-2">
+                <p class="lead">
+                    Likes
+                </p>
+                <p id="following" class="status-value">
+                    13
+                </p>
             </div>
         </div>
     </div>
