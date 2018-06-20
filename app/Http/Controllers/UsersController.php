@@ -20,7 +20,7 @@ class UsersController extends Controller
             'user' => $user,
             'books' => $books,
             'count_want' => $count_want,
-            // 'count_have' => $count_have,
+            'count_have' => $count_have,
         ]);
     }
 }

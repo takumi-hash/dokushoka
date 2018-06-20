@@ -76,4 +76,50 @@ class User extends Authenticatable
             return $item_code_exists;
         }
     }
+    
+    public function have_books()
+    {
+        return $this->books()->where('type', 'have');
+    }
+
+    public function have($itemId)
+    {
+        // Is the user already "want"?
+        $exist = $this->is_having($itemId);
+
+        if ($exist) {
+            // do nothing
+            return false;
+        } else {
+            // do "have"
+            $this->books()->attach($itemId, ['type' => 'have']);
+            return true;
+        }
+    }
+
+    public function dont_have($itemId)
+    {
+        // Is the user already "want"?
+        $exist = $this->is_having($itemId);
+
+        if ($exist) {
+            // remove "want"
+            \DB::delete("DELETE FROM book_user WHERE user_id = ? AND book_id = ? AND type = 'have'", [\Auth::user()->id, $itemId]);
+        } else {
+            // do nothing
+            return false;
+        }
+    }
+
+    public function is_having($itemIdOrCode)
+    {
+        if (strlen($itemIdOrCode)<10) {
+            $item_id_exists = $this->have_books()->where('book_id', $itemIdOrCode)->exists();
+            return $item_id_exists;
+        } else {
+            $item_code_exists = $this->have_books()->where('isbn', $itemIdOrCode)->exists();
+            return $item_code_exists;
+        }
+    }
+
 }

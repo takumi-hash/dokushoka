@@ -49,10 +49,12 @@ use \App\Book;
     {
       $book = Book::find($id);
       $want_users = $book->want_users;
+      $have_users = $book->have_users;
 
       return view('books.show', [
-          'book' => $book,
-          'want_users' => $want_users,
+        'book' => $book,
+        'want_users' => $want_users,
+        'have_users' => $have_users,
       ]);
     }
 }

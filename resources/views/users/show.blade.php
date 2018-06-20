@@ -15,7 +15,7 @@
             </div>
             <div class="lead">HAVE</div>
             <div id="have_count" class="status-value">
-                21
+                {{ $count_have }}
             </div>
             <div class="lead">
                 Followers
