@@ -6,9 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
+use \App\Post;
+
 class PostsController extends Controller
 {
-    public function index()
+/*    public function index()
     {
         $data = [];
         if (\Auth::check()) {
@@ -19,19 +21,21 @@ class PostsController extends Controller
                 'user' => $user,
                 'posts' => $posts,
             ];
-            $data += $this->counts($user);
+            $data += $this->count_posts($user);
             return view('users.show', $data);
         }else {
             return view('welcome');
         }
-    }
+    }*/
     public function store(Request $request)
     {
         $this->validate($request, [
-            'content' => 'required|max:191',
+            'title' => 'required | max:191',
+            'content' => 'required|max:20000',
         ]);
 
         $request->user()->posts()->create([
+            'title' => $request->title,
             'content' => $request->content,
         ]);
 
@@ -39,7 +43,7 @@ class PostsController extends Controller
     }
     public function destroy($id)
     {
-        $micropost = \App\Post::find($id);
+        $post = \App\Post::find($id);
 
         if (\Auth::id() === $post->user_id) {
             $post->delete();

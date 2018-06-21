@@ -13,8 +13,10 @@
 @endsection
 
 @section('content')
-<div class="contnainer">
+<div class="container">
     @include('books.books')
     {!! $books->render() !!}
-    </div>
+    @include('posts.posts')
+    {!! $books->render() !!}
+</div>
 @endsection

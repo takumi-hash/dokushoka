@@ -121,9 +121,17 @@ class User extends Authenticatable
             return $item_code_exists;
         }
     }
+    
     public function posts()
     {
         return $this->hasMany(Post::class);
+    }
+    
+    public function count_posts($user) {
+        $count_posts = $user->posts()->count();
+        return [
+            'count_posts' => $count_posts,
+        ];
     }
 
 }

@@ -7,9 +7,8 @@ use App\Http\Controllers\Controller;
 
 use \App\Book;
 
-  class BooksController extends Controller
-  {
-
+class BooksController extends Controller
+{
     public function create()
     {
         $q_title = request()->q_title;

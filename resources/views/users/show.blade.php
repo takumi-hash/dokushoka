@@ -1,58 +1,69 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid">
-        <div class="text-center">
-            <img src="/images/user.jpg" alt="" class="rounded-circle user_photo">
+    <div class="p-5 bg-dark">
+        <div class="text-center mt-5 mb-3">
+            <img src="/images/user.jpg" alt="" class="rounded-circle user-photo">
         </div>
-        <div class="text-center">
-            <h2 class="font-weight-light">{{ $user->name }}</h1>
-        </div>
-        <div class="text-center row">
-            <div class="border-right col-md-2">
-                <p class="lead">Posts</p>
-                <p id="" class="status-value">
-                    {{ $count_posts }}
-                </p>
-            </div>
-            <div class="border-right col-md-2">
-                <p class="lead">Books</p>
-                <p id="have_count" class="status-value">
-                    {{ $count_have }}
-                </p>
-            </div>
-            <div class="border-right col-md-2">
-                <p class="lead">Wants</p>
-                <p id="want_count" class="status-value">
-                    {{ $count_want }}
-                </p>
-            </div>
-            <div class="border-right col-md-2">
-                <p class="lead">
-                    Followers
-                </p>
-                <p id="followers" class="status-value">
-                    211
-                </p>
-            </div>
-            <div class="border-right col-md-2">
-                <p class="lead">
-                    Following
-                </p>
-                <p id="followers" class="status-value">
-                    162
-                </p>
-            </div>
-            <div class="col-md-2">
-                <p class="lead">
-                    Likes
-                </p>
-                <p id="following" class="status-value">
-                    13
-                </p>
-            </div>
+        <div class="text-center mb-5">
+            <h2 class="font-weight-normal text-light">{{ $user->name }}</h2>
+            <p class="lead mt-3 text-light"><i class="fas fa-quote-left text-white-50 mr-3"></i>Self introduction goes here. To be implemeneted later.<i class="fas fa-quote-right text-white-50 ml-3"></i></p>
         </div>
     </div>
-    @include('books.books', ['books' => $books])
-    {!! $books->render() !!}
+    <div class="container">
+        <ul class="nav nav-tabs nav-fill mt-3" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">{{ $count_posts }} Posts</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="books-tab" data-toggle="tab" href="#books" role="tab" aria-controls="books" aria-selected="false">{{ $count_have }} Books</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="wants-tab" data-toggle="tab" href="#wants" role="tab" aria-controls="wants" aria-selected="false">{{ $count_want }} Wants</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="follower-tab" data-toggle="tab" href="#follower" role="tab" aria-controls="follower" aria-selected="false">num Followers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="false">num Following</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="likes-tab" data-toggle="tab" href="#likes" role="tab" aria-controls="likes" aria-selected="false">num Likes</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="posts-tab">
+                @if (count($posts) > 0)
+                    @include('posts.posts', ['posts' => $posts])
+                @endif
+            </div>
+            <div class="tab-pane fade" id="books" role="books" aria-labelledby="books-tab">
+                @include('books.books', ['books' => $books])
+                {!! $books->render() !!}
+            </div>
+            <div class="tab-pane fade" id="wants" role="wants" aria-labelledby="wants-tab">
+                @include('books.books', ['books' => $books])
+                {!! $books->render() !!}
+            </div>
+            <div class="tab-pane fade" id="followers" role="followers" aria-labelledby="followers-tab">
+                
+            </div>
+            <div class="tab-pane fade" id="following" role="following" aria-labelledby="following-tab">
+                
+            </div>
+            <div class="tab-pane fade" id="likes" role="likes" aria-labelledby="likes-tab">
+                
+            </div>
+        </div>
+    @if (Auth::id() == $user->id)
+    {!! Form::open(['route' => 'posts.store']) !!}
+        <div class="form-group">
+            {!! Form::textarea('title', old('title'), ['class' => 'form-control', 'placeholder'=>'Title','rows' => '1']) !!}
+            {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'placeholder'=>'Content', 'row' => '3']) !!}
+            {!! Form::submit('Post', ['class' => 'btn btn-primary btn-block']) !!}
+        </div>
+        {!! Form::close() !!}
+    @endif
+
+
 @endsection

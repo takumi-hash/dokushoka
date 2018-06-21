@@ -37,7 +37,19 @@ body * {
     font-size: 13px;
 }
 
-.user_photo{
+.user-photo{
     width:120px;
     height: auto;
+}
+
+.card-author-name {
+    font-size: 150%;
+}
+
+.post-title {
+    text-transform: capitalize;
+}
+
+.post-content {
+    text-align: justify;
 }

@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 
 use App\Book;
 
+use App\Post;
+
 class WelcomeController extends Controller
 {
     /**
@@ -18,8 +20,10 @@ class WelcomeController extends Controller
     public function index()
     {
         $books = Book::orderBy('updated_at', 'desc')->paginate(20);
+        $posts = Post::orderBy('updated_at', 'desc')->paginate(20);
         return view('welcome', [
             'books' => $books,
+            'posts' => $posts,
         ]);
     }
 }
