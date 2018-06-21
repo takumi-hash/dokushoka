@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
 
+use \App\User;
+
 use \App\Post;
 
 class PostsController extends Controller
@@ -27,6 +29,14 @@ class PostsController extends Controller
             return view('welcome');
         }
     }*/
+    public function create(Request $request)
+    {
+        $user = \Auth::user();
+        
+        return view('posts.create', [
+        'user' => $user,
+      ]);
+    }
     public function store(Request $request)
     {
         $this->validate($request, [

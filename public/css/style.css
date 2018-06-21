@@ -52,4 +52,36 @@ body * {
 
 .post-content {
     text-align: justify;
+    line-height: 1.8em;
+}
+
+#form-bg {
+    height: calc(100vh - 80px);
+}
+
+.form-group {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 0px 30px;;
+}
+
+.form-group textarea {
+    outline: none;
+    box-shadow:none !important;
+}
+
+#form-title  {
+    border: none;
+    border-radius: 0;
+    font-size: 130%;
+}
+
+#form-content  {
+    border: none;
+    border-radius: 0;
+    height: calc(100vh - 320px);
+}
+
+#form-button {
+    border-radius: 10px;
 }

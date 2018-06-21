@@ -12,11 +12,11 @@
                     <span class="text-muted ml-3">{{ $post->created_at }}</span>
                     <h3 class="text-dark py-3 post-title">{!! nl2br(e($post->title)) !!}</h3>
                     <p class="post-content">{!! nl2br(e($post->content)) !!}</p>
-                @if (Auth::id() == $post->user_id)
-                    {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete', 'class'=>'text-right']) !!}
-                        {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
-                    {!! Form::close() !!}
-                @endif
+                    @if (Auth::id() == $post->user_id)
+                        {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete', 'class'=>'text-right']) !!}
+                            {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-xs']) !!}
+                        {!! Form::close() !!}
+                    @endif
                 </div>
             </div>
         </div>

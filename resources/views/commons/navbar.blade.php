@@ -24,7 +24,10 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('books.create') }}">アイテムを追加</a>
+                                <a class="nav-link" href="{{ route('books.create') }}">読んだ本を追加</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('posts.create') }}">書評を書く</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('ranking.want') }}">Wantランキング</a>

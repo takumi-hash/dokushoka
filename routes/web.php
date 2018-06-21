@@ -28,5 +28,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('have', 'BookUserController@have')->name('book_user.have');
     Route::delete('have', 'BookUserController@dont_have')->name('book_user.dont_have');
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
-    Route::resource('posts', 'PostsController', ['only' => ['store', 'destroy']]);
+    Route::resource('posts', 'PostsController', ['only' => ['create','store', 'destroy']]);
 });
