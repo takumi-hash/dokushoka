@@ -34,7 +34,7 @@
                 <a class="nav-link" id="following-tab" data-toggle="tab" href="#followings" role="tab" aria-controls="following" aria-selected="false">{!! $count_followings !!} Following</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="likes-tab" data-toggle="tab" href="#likes" role="tab" aria-controls="likes" aria-selected="false">num Likes</a>
+                <a class="nav-link" id="likes-tab" data-toggle="tab" href="#likes" role="tab" aria-controls="likes" aria-selected="false">Liked Posts</a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">

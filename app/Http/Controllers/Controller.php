@@ -28,4 +28,11 @@ class Controller extends BaseController
             'count_followers' => $count_followers,
         ];
     }
+    
+    public function count_favorites($user){
+        $count_favorites = $user->favorites()->count();
+        return [
+            'count_favorites' => $count_favorites,
+        ];
+    }
 }

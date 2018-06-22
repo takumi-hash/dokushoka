@@ -29,11 +29,14 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('posts.create') }}">書評を書く</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('ranking.want') }}">Wantランキング</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('ranking.have') }}">Haveランキング</a>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    Ranking <span class="caret"></span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('ranking.have') }}">読んだ！ランキング</a>
+                                    <a class="dropdown-item" href="{{ route('ranking.want') }}">いいね！数ランキング</a>
+                                </div>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('users.index') }}">Users List</a>
