@@ -21,7 +21,7 @@ class UsersController extends Controller
         ]);
     }
 
-    public function followings($id)
+    /*public function followings($id)
     {
         $user = User::find($id);
         $followings = $user->followings()->paginate(10);
@@ -49,7 +49,7 @@ class UsersController extends Controller
         $data += $this->counts($user);
 
         return view('users.followers', $data);
-    }
+    }*/
     
     public function show($id)
     {
@@ -58,8 +58,8 @@ class UsersController extends Controller
         $count_have = $user->want_books()->count();
         $books = \DB::table('books')->join('book_user', 'books.id', '=', 'book_user.book_id')->select('books.*')->where('book_user.user_id', $user->id)->distinct()->paginate(20);
         $posts = $user->posts()->orderBy('created_at', 'desc')->paginate(10);
-        /*$followings = $user->followings()->paginate(10);
-        $followers = $user->followers()->paginate(10);*/
+        $followings = $user->followings()->paginate(10);
+        $followers = $user->followers()->paginate(10);
         $count_posts = $user->posts()->count();
         $count_followers = $user->followers()->count();
         $count_followings = $user->followings()->count();
@@ -68,8 +68,8 @@ class UsersController extends Controller
             'user' => $user,
             'books' => $books,
             'posts' => $posts,
-            /*'followings' => $followings,
-            'followers' => $followers,*/
+            'followings' => $followings,
+            'followers' => $followers,
             'count_want' => $count_want,
             'count_have' => $count_have,
             'count_posts' => $count_posts,

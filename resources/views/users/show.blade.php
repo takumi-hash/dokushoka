@@ -49,10 +49,12 @@
                 {!! $books->render() !!}
             </div>
             <div class="tab-pane fade" id="followers" role="followers" aria-labelledby="followers-tab">
-                @include('users.followers', ['followers' => $user->followers])
+                @include('users.followers', ['followers' => $followers])
+                {!! $followers->render() !!}
             </div>
             <div class="tab-pane fade" id="followings" role="following" aria-labelledby="following-tab">
-                @include('users.followings', ['followings' => $user->followings])
+                @include('users.followings', ['followings' => $followings])
+                {!! $followings->render() !!}
             </div>
             <div class="tab-pane fade" id="likes" role="likes" aria-labelledby="likes-tab">
                 
