@@ -4,20 +4,22 @@
     <div class="card my-3">
         <div class="card-body p-5">
             <div class="row">
-                <div class="col-1">
+                <div class="col-lg-1 col-sm-4">
                     <img class="rounded-circle align-middle" src="/images/user{{ $user->id }}.jpg" alt="">
                 </div>
-                <div class="col-10">
+                <div class="col-lg-10 col-sm-7">
                     <span class="">{!! link_to_route('users.show', $user->name, ['id' => $user->id]) !!}</span>
                     <span class="text-muted ml-3">{{ $post->created_at }}</span>
-                    <h3 class="text-dark py-3 post-title">{!! nl2br(e($post->title)) !!}</h3>
-                    <hr>
-                    <p class="post-content">{!! nl2br(e($post->content)) !!}</p>
                 </div>
                 <div class="col-1">
                     @if(Auth::check())
                         @include('posts.favorite_button', ['post' => $post])
                     @endif
+                </div>
+                <div class="col-lg-10 offset-lg-1">
+                    <h3 class="text-dark py-3 post-title">{!! nl2br(e($post->title)) !!}</h3>
+                    <hr>
+                    <p class="post-content">{!! nl2br(e($post->content)) !!}</p>
                 </div>
                 <div class="col-1 offset-11">
                     @if (Auth::id() == $post->user_id)
