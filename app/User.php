@@ -174,4 +174,15 @@ class User extends Authenticatable
     public function is_following($userId) {
         return $this->followings()->where('follow_id', $userId)->exists();
     }
+    
+    public function is_followed($userId) {
+        return $this->followers()->where('user_id', $userId)->exists();
+    }
+    
+    public function feed_posts()
+    {
+        $follow_user_ids = $this->followings()-> pluck('users.id')->toArray();
+        $follow_user_ids[] = $this->id;
+        return Post::whereIn('user_id', $follow_user_ids);
+    }
 }

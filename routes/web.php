@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'WelcomeController@index');
+Route::get('timeline', 'PostsController@index');
 //Route::get('/', 'PostsController@index');
 
 Auth::routes();

@@ -85,3 +85,37 @@ body * {
 #form-button {
     border-radius: 10px;
 }
+
+#follow-button {
+    text-align: left;
+    padding-left: 11px;
+    width: 100px;
+    height: 35px;
+    font-size: 80%;
+    border-radius: 18px;
+}
+
+#unfollow-button {
+    text-align: left;
+    padding-left: 11px;
+    width: 100px;
+    height: 35px;
+    font-size: 80%;
+    border-radius: 18px;
+}
+
+#unfollow-button:hover, #unfollow-button:focus, #unfollow-button:active, #unfollow-button.active {
+    background-color: crimson;
+    border-color: crimson;
+    
+}
+#unfollow-button:hover span#followed, #unfollow-button:focus span#followed, #unfollow-button:active span#followed, #unfollow-button.active span#followed {
+    display: none;
+}
+span#unfollow{
+    display: none;
+}
+#unfollow-button:hover span#unfollow, #unfollow-button:focus span#unfollow, #unfollow-button:active span#unfollow, #unfollow-button.active span#unfollow {
+    color:white;
+    display: inline;
+}

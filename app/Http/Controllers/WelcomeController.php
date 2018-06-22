@@ -19,8 +19,8 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        $books = Book::orderBy('updated_at', 'desc')->paginate(20);
-        $posts = Post::orderBy('updated_at', 'desc')->paginate(20);
+        $books = Book::orderBy('updated_at', 'desc')->paginate(10);
+        $posts = Post::orderBy('updated_at', 'desc')->paginate(10);
         return view('welcome', [
             'books' => $books,
             'posts' => $posts,

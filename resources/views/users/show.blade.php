@@ -1,15 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="p-5 bg-dark">
-        <div class="text-center mt-5 mb-3">
+    <div class="p-5 bg-dark text-center">
+        <div class="mt-5 mb-3">
             <img src="/images/user{{ $user->id }}.jpg" alt="" class="rounded-circle user-photo">
         </div>
-        <div class="text-center mb-5">
-            <h2 class="font-weight-normal text-light">{{ $user->name }}</h2>
-            <p class="lead mt-3 text-light"><i class="fas fa-quote-left text-white-50 mr-3"></i>Self introduction goes here. To be implemeneted later.<i class="fas fa-quote-right text-white-50 ml-3"></i></p>
-        </div>
-        <div>
+        <h2 class="font-weight-normal text-light">{{ $user->name }}</h2>
+        <p class="lead mt-3 text-light"><i class="fas fa-quote-left text-white-50 mr-3"></i>Self introduction goes here. To be implemented later.<i class="fas fa-quote-right text-white-50 ml-3"></i></p>
+            @if (Auth::user()->id != $user->id)
+                @if (Auth::user()->is_followed($user->id))
+                <span class="badge badge-pill badge-secondary mb-3">Follows you</span>
+                @endif
+            @endif
+        <div class="text-center">
             @include('user_follow.follow_button', ['user' => $user])
         </div>
     </div>

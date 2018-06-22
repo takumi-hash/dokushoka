@@ -22,7 +22,7 @@ class BooksController extends Controller
                 'title' => $q_title,
                 'author' => $q_author,
                 'imageFlag' => 1,
-                'hits' => 20,
+                /*'hits' => 100,*/
             ]);
 
             // Creating "Book" instance to make it easy to handle.（not saving）

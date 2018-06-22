@@ -12,25 +12,20 @@ use \App\Post;
 
 class PostsController extends Controller
 {
-/*
-public function index()
+    public function index()
     {
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $posts = $user->posts()->orderBy('created_at', 'desc')->paginate(10);
+            $posts = $user->feed_posts()->orderBy('created_at', 'desc')->paginate(10);
 
             $data = [
                 'user' => $user,
                 'posts' => $posts,
             ];
-            $data += $this->count_posts($user);
-            return view('users.show', $data);
-        }else {
-            return view('welcome');
         }
+        return view('timeline', $data);
     }
-*/
     public function create(Request $request)
     {
         $user = \Auth::user();
