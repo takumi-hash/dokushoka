@@ -59,13 +59,13 @@ body * {
     height: calc(100vh - 80px);
 }
 
-.form-group {
+#review-form-group {
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0px 0px 30px;;
 }
 
-.form-group textarea {
+#review-form-group textarea {
     outline: none;
     box-shadow:none !important;
 }

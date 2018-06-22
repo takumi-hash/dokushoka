@@ -127,11 +127,51 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
     
-    public function count_posts($user) {
-        $count_posts = $user->posts()->count();
-        return [
-            'count_posts' => $count_posts,
-        ];
+    public function followings()
+    {
+        return $this->belongsToMany(User::class, 'user_follow', 'user_id', 'follow_id')->withTimestamps();
     }
 
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'user_follow', 'follow_id', 'user_id');
+    }
+    public function follow($userId)
+    {
+        // confirm if already following
+        $exist = $this->is_following($userId);
+        // confirming that it is not you
+        $its_me = $this->id == $userId;
+    
+        if ($exist || $its_me) {
+            // do nothing if already following
+            return false;
+        } else {
+            // follow if not following
+            $this->followings()->attach($userId);
+            return true;
+        }
+    }
+    public function unfollow($userId)
+    {
+        // confirming if already following
+        $exist = $this->is_following($userId);
+        // confirming that it is not you
+        $its_me = $this->id == $userId;
+    
+    
+        if ($exist && !$its_me) {
+            // stop following if following
+            $this->followings()->detach($userId);
+            return true;
+        } else {
+            // do nothing if not following
+            return false;
+        }
+    }
+    
+    
+    public function is_following($userId) {
+        return $this->followings()->where('follow_id', $userId)->exists();
+    }
 }

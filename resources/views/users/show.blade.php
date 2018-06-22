@@ -3,11 +3,14 @@
 @section('content')
     <div class="p-5 bg-dark">
         <div class="text-center mt-5 mb-3">
-            <img src="/images/user.jpg" alt="" class="rounded-circle user-photo">
+            <img src="/images/user{{ $user->id }}.jpg" alt="" class="rounded-circle user-photo">
         </div>
         <div class="text-center mb-5">
             <h2 class="font-weight-normal text-light">{{ $user->name }}</h2>
             <p class="lead mt-3 text-light"><i class="fas fa-quote-left text-white-50 mr-3"></i>Self introduction goes here. To be implemeneted later.<i class="fas fa-quote-right text-white-50 ml-3"></i></p>
+        </div>
+        <div>
+            @include('user_follow.follow_button', ['user' => $user])
         </div>
     </div>
     <div class="container">
@@ -22,10 +25,10 @@
                 <a class="nav-link" id="wants-tab" data-toggle="tab" href="#wants" role="tab" aria-controls="wants" aria-selected="false">{{ $count_want }} Wants</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="follower-tab" data-toggle="tab" href="#follower" role="tab" aria-controls="follower" aria-selected="false">num Followers</a>
+                <a class="nav-link" id="follower-tab" data-toggle="tab" href="#followers" role="tab" aria-controls="follower" aria-selected="false">{!! $count_followers !!} Followers</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="following-tab" data-toggle="tab" href="#following" role="tab" aria-controls="following" aria-selected="false">num Following</a>
+                <a class="nav-link" id="following-tab" data-toggle="tab" href="#followings" role="tab" aria-controls="following" aria-selected="false">{!! $count_followings !!} Following</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="likes-tab" data-toggle="tab" href="#likes" role="tab" aria-controls="likes" aria-selected="false">num Likes</a>
@@ -46,10 +49,10 @@
                 {!! $books->render() !!}
             </div>
             <div class="tab-pane fade" id="followers" role="followers" aria-labelledby="followers-tab">
-                
+                @include('users.followers', ['followers' => $user->followers])
             </div>
-            <div class="tab-pane fade" id="following" role="following" aria-labelledby="following-tab">
-                
+            <div class="tab-pane fade" id="followings" role="following" aria-labelledby="following-tab">
+                @include('users.followings', ['followings' => $user->followings])
             </div>
             <div class="tab-pane fade" id="likes" role="likes" aria-labelledby="likes-tab">
                 

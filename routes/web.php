@@ -29,4 +29,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('have', 'BookUserController@dont_have')->name('book_user.dont_have');
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
     Route::resource('posts', 'PostsController', ['only' => ['create','store', 'destroy']]);
+    Route::group(['prefix' => 'users/{id}'], function () {
+        Route::post('follow', 'UserFollowController@store')->name('user.follow');
+        Route::delete('unfollow', 'UserFollowController@destroy')->name('user.unfollow');
+        Route::get('followings', 'UsersController@followings')->name('users.followings');
+        Route::get('followers', 'UsersController@followers')->name('users.followers');
+    });
 });

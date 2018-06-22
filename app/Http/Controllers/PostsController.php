@@ -12,7 +12,8 @@ use \App\Post;
 
 class PostsController extends Controller
 {
-/*    public function index()
+/*
+public function index()
     {
         $data = [];
         if (\Auth::check()) {
@@ -28,7 +29,8 @@ class PostsController extends Controller
         }else {
             return view('welcome');
         }
-    }*/
+    }
+*/
     public function create(Request $request)
     {
         $user = \Auth::user();

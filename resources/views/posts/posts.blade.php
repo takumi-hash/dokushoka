@@ -5,7 +5,7 @@
         <div class="card-body p-5">
             <div class="row">
                 <div class="col-1">
-                    <img class="rounded-circle align-middle" src="{{ secure_asset('/images/user.jpg') }}" alt="">
+                    <img class="rounded-circle align-middle" src="/images/user{{ $user->id }}.jpg" alt="">
                 </div>
                 <div class="col-11">
                     <span class="">{!! link_to_route('users.show', $user->name, ['id' => $user->id]) !!}</span>
