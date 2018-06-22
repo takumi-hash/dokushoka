@@ -2,7 +2,7 @@
 @foreach ($posts as $post)
     <?php $user = $post->user; ?>
     <div class="card my-3">
-        <div class="card-body p-2">
+        <div class="card-body p-4">
             <div class="row">
                 <div class="col-md-1 col-4">
                     <img class="rounded-circle align-middle" src="/images/user{{ $user->id }}.jpg" alt="">
