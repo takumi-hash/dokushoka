@@ -34,7 +34,7 @@
                 <a class="nav-link" id="following-tab" data-toggle="tab" href="#followings" role="tab" aria-controls="following" aria-selected="false">{!! $count_followings !!} Following</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="likes-tab" data-toggle="tab" href="#likes" role="tab" aria-controls="likes" aria-selected="false">Liked Posts</a>
+                <a class="nav-link" id="likes-tab" data-toggle="tab" href="#likes" role="tab" aria-controls="likes" aria-selected="false">{!! $count_favorites !!} Likes</a>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
@@ -60,7 +60,8 @@
                 {!! $followings->render() !!}
             </div>
             <div class="tab-pane fade" id="likes" role="likes" aria-labelledby="likes-tab">
-                
+                @include('users.favorites', ['favorites' => $favorites])
+                {!! $favorites->render() !!}
             </div>
         </div>
 @endsection

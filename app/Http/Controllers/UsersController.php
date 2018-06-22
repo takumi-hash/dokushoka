@@ -21,7 +21,7 @@ class UsersController extends Controller
         ]);
     }
 
-    /*public function followings($id)
+    public function followings($id)
     {
         $user = User::find($id);
         $followings = $user->followings()->paginate(10);
@@ -49,7 +49,22 @@ class UsersController extends Controller
         $data += $this->counts($user);
 
         return view('users.followers', $data);
-    }*/
+    }
+    
+    public function favorites($id)
+    {
+        $user = User::find($id);
+        $favorites = $user->favorites()->paginate(100);
+
+        $data = [
+            'user' => $user,
+            'posts' => $favorites,
+        ];
+
+        $data += $this->count_favorites($user);
+
+        return view('users.favorites', $data);
+    }
     
     public function show($id)
     {
@@ -60,9 +75,11 @@ class UsersController extends Controller
         $posts = $user->posts()->orderBy('created_at', 'desc')->paginate(3);
         $followings = $user->followings()->paginate(10);
         $followers = $user->followers()->paginate(10);
+        $favorites = $user->favorites()->paginate(30);
         $count_posts = $user->posts()->count();
         $count_followers = $user->followers()->count();
         $count_followings = $user->followings()->count();
+        $count_favorites = $user->favorites()->count();
 
         return view('users.show', [
             'user' => $user,
@@ -70,11 +87,13 @@ class UsersController extends Controller
             'posts' => $posts,
             'followings' => $followings,
             'followers' => $followers,
+            'favorites' => $favorites,
             'count_want' => $count_want,
             'count_have' => $count_have,
             'count_posts' => $count_posts,
             'count_followers' => $count_followers,
             'count_followings' => $count_followings,
+            'count_favorites' => $count_favorites,
         ]);
     }
 
