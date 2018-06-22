@@ -13,7 +13,12 @@
                     <h3 class="text-dark py-3 post-title">{!! nl2br(e($post->title)) !!}</h3>
                     <hr>
                     <p class="post-content">{!! nl2br(e($post->content)) !!}</p>
-                </div> 
+                </div>
+                <div class="col-1">
+                    @if(Auth::check())
+                        @include('posts.favorite_button', ['post' => $post])
+                    @endif
+                </div>
                 <div class="col-1 offset-11">
                     @if (Auth::id() == $post->user_id)
                         {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete', 'class'=>'text-right']) !!}

@@ -11,7 +11,7 @@ body * {
 
 .jumbotron-extend{
     color: #555;
-    background: linear-gradient(0deg, rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url("/images/bg.jpg");
+    background: linear-gradient(0deg, rgba(255,255,255,0.6), rgba(255,255,255,0.8)), url("/images/bg2.jpg");
     background-position: top;
     background-repeat: no-repeat;
     /*background-attachment: fixed;*/
@@ -20,6 +20,10 @@ body * {
 
 .jumbotron-extend h1 {
     font-weight: lighter;
+}
+
+footer {
+    height: 80px;
 }
 
 .card img {
