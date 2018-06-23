@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-1 offset-11">
+                <div class="col-1 offset-10">
                     @if (Auth::id() == $post->user_id)
                         {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete', 'class'=>'text-right']) !!}
                             {!! Form::button('<i class="far fa-trash-alt"></i>', ['type'=> 'submit', 'class' => 'btn btn-link text-secondary']) !!}
