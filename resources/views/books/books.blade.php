@@ -1,7 +1,7 @@
 @if ($books)
     <div class="row">
         @foreach ($books as $key => $book)
-            <div class="col-md-3 col-sm-6 d-flex align-items-center py-5">
+            <div class="col-lg-3 col-md-6 d-flex align-items-center py-5">
                 <div class="col-6">
                 @if (isset($book->count))
                     <p class="text-center h4">{{ $key+1 }}位: {{ $book->count}} Points</p>
