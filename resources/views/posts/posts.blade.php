@@ -4,10 +4,10 @@
     <div class="card my-3">
         <div class="card-body p-4">
             <div class="row py-4">
-                <div class="col-md-2 col-4">
+                <div class="col-md-2 offset-md-1 col-4">
                     <img class="rounded-circle align-middle" src="/images/user{{ $user->id }}.jpg" alt="">
                 </div>
-                <div class="col-md-8 col-6">
+                <div class="col-md-7 col-6">
                     <span class="">{!! link_to_route('users.show', $user->name, ['id' => $user->id]) !!}</span>
                     <span class="text-muted ml-3">{{ $post->created_at }}</span>
                 </div>
@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-10 offset-lg-1">
+                <div class="col-md-10 offset-md-1">
                     <h3 class="text-dark py-3 post-title">{!! nl2br(e($post->title)) !!}</h3>
                     <hr>
                     <p class="post-content">{!! nl2br(e($post->content)) !!}</p>
