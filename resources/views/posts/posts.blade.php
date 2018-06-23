@@ -11,7 +11,7 @@
                     <span class="">{!! link_to_route('users.show', $user->name, ['id' => $user->id]) !!}</span>
                     <span class="text-muted ml-3">{{ $post->created_at }}</span>
                 </div>
-                <div class="col-md-1 col-1 text-right">
+                <div class="col-md-1 col-1">
                     @if(Auth::check())
                         @include('posts.favorite_button', ['post' => $post])
                     @endif
