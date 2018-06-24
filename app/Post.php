@@ -14,7 +14,7 @@ class Post extends Model
     }
 
     public function parse() {
-        $parser = new \cebe\markdown\Markdown();
+        $parser = new \cebe\markdown\MarkdownExtra();
         return $parser->parse($this->content);
     }
 
