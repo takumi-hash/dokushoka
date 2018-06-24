@@ -37,8 +37,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('followers', 'UsersController@followers')->name('users.followers');
         // favorites
         Route::get('favorites', 'UsersController@favorites')->name('users.favorites');
+        // profile
+        Route::get('edit', 'UsersController@edit')->name('users.edit');
     });
-    
+
     Route::group(['prefix' => 'posts/{id}'], function () {
         // favorites
         Route::post('favorite', 'UserFavoriteController@store')->name('user.favorite');

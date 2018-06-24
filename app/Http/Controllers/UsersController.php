@@ -15,7 +15,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::paginate(10);
-        
+
         return view('users.index', [
             'users' => $users,
         ]);
@@ -50,7 +50,7 @@ class UsersController extends Controller
 
         return view('users.followers', $data);
     }
-    
+
     public function favorites($id)
     {
         $user = User::find($id);
@@ -65,7 +65,7 @@ class UsersController extends Controller
 
         return view('users.favorites', $data);
     }
-    
+
     public function show($id)
     {
         $user = User::find($id);
@@ -94,6 +94,15 @@ class UsersController extends Controller
             'count_followers' => $count_followers,
             'count_followings' => $count_followings,
             'count_favorites' => $count_favorites,
+        ]);
+    }
+
+    public function edit($id)
+    {
+        $user = User::find($id);
+
+        return view('users.edit', [
+            'user' => $user,
         ]);
     }
 
