@@ -21,7 +21,8 @@
                 <div class="col-md-10 offset-md-1">
                     <h3 class="text-dark py-3 post-title">{!! nl2br(e($post->title)) !!}</h3>
                     <hr>
-                    <p class="post-content">{!! nl2br(e($post->content)) !!}</p>
+                    {{--<p class="post-content">{!! nl2br(e($post->content)) !!}</p>--}}
+                    <p class="post-content">{!! $post->parsed_content() !!}</p>
                 </div>
             </div>
             <div class="row">
