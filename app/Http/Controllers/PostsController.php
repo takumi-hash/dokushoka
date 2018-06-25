@@ -34,6 +34,7 @@ class PostsController extends Controller
         'user' => $user,
       ]);
     }
+    
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -45,8 +46,33 @@ class PostsController extends Controller
             'title' => $request->title,
             'content' => $request->content,
         ]);
-
         return redirect()->back();
+    }
+
+    public function edit($id)
+    {
+        $user = \Auth::user();
+        $post = Post::find($id);
+
+        return view('posts.edit', [
+            'user' => $user,
+            'post' => $post,
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'title' => 'required|max:191',
+            'content' => 'required|max:20000',
+        ]);
+
+        $post = Post::find($id);
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->save();
+
+        return redirect('timeline');
     }
     public function destroy($id)
     {

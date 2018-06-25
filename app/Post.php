@@ -21,4 +21,9 @@ class Post extends Model
     public function parsed_content() {
         return $this->parse();
     }
+    
+    public function count_favorites(){
+        $count_favorites = \DB::table('favorites')->where('post_id', $this->id)->count();
+        return $count_favorites;
+    }
 }
