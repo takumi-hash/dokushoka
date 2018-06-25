@@ -32,6 +32,7 @@ class BooksController extends Controller
                 $item->title = $rws_item['Item']['title'];
                 $item->author = $rws_item['Item']['author'];
                 $item->publisher = $rws_item['Item']['publisherName'];
+                $item->caption = $rws_item['Item']['itemCaption'];
                 $item->url = $rws_item['Item']['itemUrl'];
                 $item->image_url = str_replace('?_ex=200x200', '', $rws_item['Item']['largeImageUrl']);
                 $books[] = $item;

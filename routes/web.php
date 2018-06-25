@@ -39,6 +39,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('favorites', 'UsersController@favorites')->name('users.favorites');
         // profile
         Route::get('edit', 'UsersController@edit')->name('users.edit');
+        Route::put('udpate', 'UsersController@update')->name('users.update');
     });
 
     Route::group(['prefix' => 'posts/{id}'], function () {

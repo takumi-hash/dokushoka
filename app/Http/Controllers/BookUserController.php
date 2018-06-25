@@ -28,6 +28,7 @@ class BookUserController extends Controller
             'title' => $rws_item['title'],
             'author' => $rws_item['author'],
             'publisher' => $rws_item['publisherName'],
+            'caption' => $rws_item['itemCaption'],
             'url' => $rws_item['itemUrl'],
             'image_url' => str_replace('?_ex=200x200', '', $rws_item['largeImageUrl']),
         ]);
@@ -66,6 +67,7 @@ class BookUserController extends Controller
             'title' => $rws_item['title'],
             'author' => $rws_item['author'],
             'publisher' => $rws_item['publisherName'],
+            'caption' => $rws_item['itemCaption'],
             'url' => $rws_item['itemUrl'],
             'image_url' => str_replace('?_ex=200x200', '', $rws_item['largeImageUrl']),
         ]);

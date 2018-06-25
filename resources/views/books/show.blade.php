@@ -30,6 +30,8 @@
             </div>
             <div class="col-md-8 col-sm-6 d-flex align-items-center p-3 py-5">
                 <div>
+                    <h5>あらすじ</h5>
+                    <p class="text-justify">{{ $book->caption }}</p>
                     <h5>Wantしたユーザー</h5>
                     @foreach ($want_users as $user)
                         <a href="{{ route('users.show', $user->id) }}">{{ $user->name }}</a>

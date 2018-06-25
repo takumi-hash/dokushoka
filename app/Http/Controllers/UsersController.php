@@ -106,4 +106,20 @@ class UsersController extends Controller
         ]);
     }
 
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:191',
+            'email' => 'required|max:191',
+            'bio' => 'max:191',
+        ]);
+
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->bio = $request->bio;
+        $user->save();
+
+        return redirect(route('users.show', \Auth::user()->id));
+    }
 }
