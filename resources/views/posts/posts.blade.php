@@ -27,7 +27,7 @@
                     <p class="post-content">{!! $post->parsed_content() !!}</p>
                 </div>
             </div>
-            {!! link_to_route('posts.edit', 'このメッセージを編集', ['id' => $post->id]) !!}
+            {!! link_to_route('posts.edit', '編集', ['id' => $post->id]) !!}
             <div class="row">
                 <div class="col-1 offset-10">
                     @if (Auth::id() == $post->user_id)
@@ -37,7 +37,6 @@
                     @endif
                 </div>
             </div>
-
         </div>
     </div>
 @endforeach
