@@ -70,8 +70,10 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $count_want = $user->want_books()->count();
-        $count_have = $user->want_books()->count();
+        $count_have = $user->have_books()->count();
         $books = \DB::table('books')->join('book_user', 'books.id', '=', 'book_user.book_id')->select('books.*')->where('book_user.user_id', $user->id)->distinct()->paginate(20);
+        $want_books = $user->want_books()->paginate(20);
+        $have_books = $user->have_books()->paginate(20);
         $posts = $user->posts()->orderBy('created_at', 'desc')->paginate(3);
         $followings = $user->followings()->paginate(10);
         $followers = $user->followers()->paginate(10);
@@ -84,6 +86,8 @@ class UsersController extends Controller
         return view('users.show', [
             'user' => $user,
             'books' => $books,
+            'want_books' => $want_books,
+            'have_books' => $have_books,
             'posts' => $posts,
             'followings' => $followings,
             'followers' => $followers,

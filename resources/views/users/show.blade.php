@@ -22,7 +22,7 @@
                 <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">{{ $count_posts }} Posts</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" id="books-tab" data-toggle="tab" href="#books" role="tab" aria-controls="books" aria-selected="false">{{ $count_have }} Books</a>
+                <a class="nav-link" id="books-tab" data-toggle="tab" href="#books" role="tab" aria-controls="books" aria-selected="false">{{ $count_have }} Have's</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" id="wants-tab" data-toggle="tab" href="#wants" role="tab" aria-controls="wants" aria-selected="false">{{ $count_want }} Wants</a>
@@ -44,12 +44,12 @@
                 @endif
             </div>
             <div class="tab-pane fade" id="books" role="books" aria-labelledby="books-tab">
-                @include('books.books', ['books' => $books])
-                {!! $books->render() !!}
+                @include('books.books', ['books' => $have_books])
+                {!! $have_books->render() !!}
             </div>
             <div class="tab-pane fade" id="wants" role="wants" aria-labelledby="wants-tab">
-                @include('books.books', ['books' => $books])
-                {!! $books->render() !!}
+                @include('books.books', ['books' => $want_books])
+                {!! $want_books->render() !!}
             </div>
             <div class="tab-pane fade" id="followers" role="followers" aria-labelledby="followers-tab">
                 @include('users.followers', ['followers' => $followers])
