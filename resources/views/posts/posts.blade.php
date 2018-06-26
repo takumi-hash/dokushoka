@@ -1,6 +1,7 @@
 <div class="">
 @foreach ($posts as $post)
     <?php $user = $post->user; ?>
+    <?php $book = $post->book; ?>
     <div class="card my-3">
         <div class="card-body p-4">
             <div class="row py-4">
@@ -10,6 +11,8 @@
                 <div class="col-md-7 col-6">
                     <span class="">{!! link_to_route('users.show', $user->name, ['id' => $user->id]) !!}</span>
                     <span class="text-muted ml-3">{{ $post->created_at }}</span>
+                    <br>
+                    <span class=""><a href="books/{{ $book->id }}">{{ $book->title }}</a></span>
                 </div>
                 <div class="col-md-1 offset-md-1 col-1">
                     <div class="btn-group" role="group" aria-label="favorites">

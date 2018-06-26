@@ -31,9 +31,11 @@ class PostsController extends Controller
     public function create(Request $request)
     {
         $user = \Auth::user();
-        
+        $bookId = $request->book_id;
+        $book = Book::find($bookId);
         return view('posts.create', [
         'user' => $user,
+        'book' => $book,
       ]);
     }
     
@@ -42,11 +44,13 @@ class PostsController extends Controller
         $this->validate($request, [
             'title' => 'required | max:191',
             'content' => 'required|max:20000',
+            'book_id'=> 'required',
         ]);
 
         $request->user()->posts()->create([
             'title' => $request->title,
             'content' => $request->content,
+            'book_id' => $request->book_id,
         ]);
         return redirect()->back();
     }
