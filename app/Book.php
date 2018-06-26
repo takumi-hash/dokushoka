@@ -12,6 +12,11 @@ class Book extends Model
     {
         return $this->belongsToMany(User::class)->withPivot('type')->withTimestamps();
     }
+    
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 
     public function want_users()
     {

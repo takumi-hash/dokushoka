@@ -27,6 +27,7 @@
                                 @include('books.want_button', ['book' => $book])
                                 @include('books.have_button', ['book' => $book])
                             @endif
+                            {!! link_to_route('posts.create', 'この本で書く', ['id' => $book->id]) !!}
                             <a href="{{ $book->url }}" class="btn btn-link text-info"><i class="fas fa-shopping-cart"></i></a>
                         </div>
                     </div>
