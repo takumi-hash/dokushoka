@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+    <div class="container">
         <div class="row">
             <div class="col-md-4 col-sm-6 d-flex align-items-center p-3 py-5">
                 <div class="col-6">
@@ -40,12 +40,17 @@
                         @foreach ($have_users as $user)
                         <a href="{{ route('users.show', $user->id) }}">{{ $user->name }}</a>
                         @endforeach
-                    <p class="text-center">
-                        <a href="{{ $book->url }}" target="_blank">楽天詳細ページへ</a>
-                    </p>
                 </div>
-                    
             </div>
         </div>
-</div>
+    </div>
+    <div class="container-fluid">
+        <div class="row bg-dark">
+            <div class="col-md-8 offset-md-2">
+                <h3 class="text-center text-light my-4">この本の書評</h3>
+                    <?php $posts = $book->posts(); ?>
+                    @include('posts.posts', ['posts' => $posts])
+            </div>
+        </div>
+    </div>
 @endsection

@@ -30,7 +30,7 @@
                                 <a class="nav-link" href="{{ route('books.create') }}">読んだ本を追加</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('posts.create') }}">書評を書く</a>
+                                <a class="nav-link" href="{{ route('users.show', Auth::id()) }}">書評を書く</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

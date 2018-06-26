@@ -15,7 +15,7 @@ class Book extends Model
     
     public function posts()
     {
-        return $this->hasMany(Post::class);
+        return $this->hasMany(Post::class)->paginate(20);
     }
 
     public function want_users()
