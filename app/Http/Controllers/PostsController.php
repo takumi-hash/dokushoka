@@ -76,6 +76,7 @@ class PostsController extends Controller
         $post = Post::find($id);
         $post->title = $request->title;
         $post->content = $request->content;
+        $post->book_id = $request->book_id;
         $post->save();
 
         return redirect('timeline');
