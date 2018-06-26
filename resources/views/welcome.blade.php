@@ -14,9 +14,17 @@
 
 @section('content')
 <div class="container">
+    <h2 class="text-dark">Books Recently Viewed</h2>
     @include('books.books')
     {!! $books->render() !!}
-    @include('posts.posts')
-    {!! $books->render() !!}
+</div>
+<div class="bg-dark">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2 class="text-light my-4">Reviews Recently Posted</h2>
+            @include('posts.posts')
+            {!! $books->render() !!}
+        </div>
+    </div>
 </div>
 @endsection

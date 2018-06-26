@@ -30,9 +30,11 @@
                     <p class="post-content">{!! $post->parsed_content() !!}</p>
                 </div>
             </div>
-            {!! link_to_route('posts.edit', '編集', ['id' => $post->id]) !!}
             <div class="row">
-                <div class="col-1 offset-10">
+                <div class="col-1 offset-1">
+                    {!! link_to_route('posts.edit', '編集', ['id' => $post->id]) !!}
+                </div>
+                <div class="col-1 offset-8">
                     @if (Auth::id() == $post->user_id)
                         {!! Form::open(['route' => ['posts.destroy', $post->id], 'method' => 'delete', 'class'=>'text-right']) !!}
                             {!! Form::button('<i class="far fa-trash-alt"></i>', ['type'=> 'submit', 'class' => 'btn btn-link text-secondary']) !!}

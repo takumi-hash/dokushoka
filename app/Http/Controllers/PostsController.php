@@ -31,8 +31,7 @@ class PostsController extends Controller
     public function create(Request $request)
     {
         $user = \Auth::user();
-        $bookId = $request->book_id;
-        $book = Book::find($bookId);
+        $book = Book::find($request->book_id);
         return view('posts.create', [
         'user' => $user,
         'book' => $book,

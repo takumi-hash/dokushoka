@@ -27,11 +27,11 @@
                                 @include('books.want_button', ['book' => $book])
                                 @include('books.have_button', ['book' => $book])
                             @endif
-                            @if (Auth::user()->is_wanting($book->id) || Auth::user()->is_having($book->id))
-                                {!! link_to_route('posts.create', 'この本で書く', ['book_id' => $book->id]) !!}
-                            @endif
                             <a href="{{ $book->url }}" class="btn btn-link text-info"><i class="fas fa-shopping-cart"></i></a>
                         </div>
+                        @if (Auth::user()->is_wanting($book->id) || Auth::user()->is_having($book->id))
+                            {!! link_to_route('posts.create', 'この本で書く', ['book_id' => $book->id]) !!}
+                        @endif
                     </div>
                 </div>
 
