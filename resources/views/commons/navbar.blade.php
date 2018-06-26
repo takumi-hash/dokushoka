@@ -12,6 +12,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                     </ul>
+                    {{--{!! Form::open(['route' => 'posts.store'], ['class'=>'form-inline my-2 my-lg-0']) !!}
+                        {!! Form::input('q_title', q_title, ['class' => 'form-control mr-sm-2', 'id'=>'q_title', 'placeholder'=>'Markdown記法を使えます。']) !!}
+                        {!! Form::submit('検索', ['class' => 'btn btn-outline-success my-2 my-sm-0']) !!}
+                    {!! Form::close() !!}--}}
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -24,13 +28,10 @@
                             </li>
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('timeline') }}">Timeline</a>
+                                <a class="nav-link" href="{{ route('timeline') }}">タイムライン</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('books.create') }}">読んだ本を追加</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('users.show', Auth::id()) }}">書評を書く</a>
+                                <a class="nav-link" href="{{ route('books.create') }}">本を検索</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -41,9 +42,6 @@
                                     <a class="dropdown-item" href="{{ route('ranking.want') }}">いいね！数ランキング</a>
                                     <a class="dropdown-item" href="{{ route('users.index') }}">ユーザーランキング</a>
                                 </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('users.index') }}">Users List</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
