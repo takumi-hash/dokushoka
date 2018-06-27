@@ -30,13 +30,14 @@
                             <a href="{{ $book->url }}" class="btn btn-link text-info"><i class="fas fa-shopping-cart"></i></a>
                         </div>
                         @if(Auth::check())
-                            @if (Auth::user()->is_wanting($book->id) || Auth::user()->is_having($book->id))
+                            @if (Auth::user()->is_wanting($book->isbn) || Auth::user()->is_having($book->isbn))
+                            <?php print("id: " . $book->id . "<br>"); ?>
+                            <?php print("isbn: " . $book->isbn . "<br>"); ?>
                                 {!! link_to_route('posts.create', '書評を書く', ['book_id' => $book->id],  ['class' => 'btn btn-block btn-primary']) !!}
                             @endif
                         @endif
                     </div>
                 </div>
-
             </div>
         @endforeach
     </div>

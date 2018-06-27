@@ -51,7 +51,7 @@ class PostsController extends Controller
             'content' => $request->content,
             'book_id' => $request->book_id,
         ]);
-        return redirect()->back();
+        return redirect(route('books.show', $request->book_id));
     }
 
     public function edit($id)
