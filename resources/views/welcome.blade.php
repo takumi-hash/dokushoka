@@ -7,6 +7,15 @@
             <p class="lead">——ドクショカ——</p>
     @if (!Auth::check())
         <a href="{{ route('register') }}" class="btn btn-primary btn-lg mt-5">ドクショカを始める</a>
+    @elseif(Auth::check())
+            <div class="row">
+                <div class="mx-auto">
+                    {!! Form::open(['route' => 'books.create', 'method' => 'get', 'class' => 'form-inline']) !!}
+                    {!! Form::text('q_title', null, ['class' => 'form-control input', 'placeholder' => '書評を書きたい本を検索！', 'size' => 40]) !!}
+                    {!! Form::submit('検索', ['class' => 'btn btn-primary']) !!}
+                    {!! Form::close() !!}
+                </div>
+            </div>
     @endif
         </div>
     </div>

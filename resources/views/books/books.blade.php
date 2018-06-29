@@ -11,9 +11,9 @@
                 <div class="col-6">
                     <div class="text-dark">
                         @if ($book->id)
-                        <h6 class=""><a href="{{ route('books.show', $book->id) }}">{{ $book->title }}</a></h5>
+                            <h6 class=""><a href="{{ route('books.show', $book->id) }}">{{ $book->title }}</a></h5>
                         @else
-                        <h6 class="font-weight-normal">{{ $book->title }}</h6>
+                            <h6 class="font-weight-normal">{{ $book->title }}</h6>
                         @endif
                         <p class="author">{{ $book->author }}</p>
                         <hr>
@@ -31,9 +31,7 @@
                         </div>
                         @if(Auth::check())
                             @if(isset($book->id))
-                            <?php print("id: " . $book->id . "<br>"); ?>
-                            <?php print("isbn: " . $book->isbn . "<br>"); ?>
-                                {!! link_to_route('posts.create', '書評を書く', ['book_id' => $book->id],  ['class' => 'btn btn-block btn-primary']) !!}
+                                {!! link_to_route('posts.create', '書評を書く', ['book_id' => $book->id],  ['class' => 'btn btn-sm btn-primary']) !!}
                             @endif
                         @endif
                     </div>
